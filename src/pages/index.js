@@ -1,14 +1,39 @@
 import Head from "next/head";
+import Baneer from "../components/Baneer";
 import Header from "../components/Header";
+import ProductFeed from "../components/ProductFeed";
 
-export default function Home() {
+export default function Home({ products }) {
   return (
-    <div>
+    <div className="bg-gray-100 ">
       <Head>
-        <title>Amazon </title>
+        <title>amazon </title>
+        <link
+          rel="icon"
+          href="https://cdn3.iconfinder.com/data/icons/cute-flat-social-media-icons-3/512/amazon.png"
+        />
       </Head>
 
       <Header />
+
+      <main className="max-w-screen-xl mx-auto">
+        {/* Banner */}
+        <Baneer />
+        {/* ProductFeed */}
+        <ProductFeed products={products} />
+      </main>
     </div>
   );
 }
+
+export async function getServerSideProps(context) {
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+  return {
+    props: {
+      products,
+    },
+  };
+}
+// GET == https://fakestoreapi.com/products
