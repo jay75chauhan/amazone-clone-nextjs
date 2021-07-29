@@ -32,7 +32,7 @@ function CheckOut() {
             objectFit="contain"
           />
 
-          <div className="flex flex-col p-5 space-y-10 bg-gray-50">
+          <div className="flex flex-col p-5 space-y-10 bg-white">
             <h1 className="text-3xl border-b font-medium pb-4">
               {items.length === 0
                 ? "Your Amazone Basket is empty. "
@@ -51,12 +51,20 @@ function CheckOut() {
                 hasPrime={item.hasPrime}
               />
             ))}
+            {items.length === 0 && (
+              <Image
+                src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
+                width={300}
+                height={280}
+                objectFit="contain"
+              />
+            )}
           </div>
         </div>
 
         {/* Right */}
-        <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[400px]  ">
-          {items.length > 0 && (
+        {items.length > 0 && (
+          <div className="flex flex-col bg-white m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[400px]  ">
             <>
               <h2 className="whitespace-nowrap">
                 Subtotal ({items.length} items) :{""}
@@ -75,8 +83,8 @@ function CheckOut() {
                 {!session ? "Sign in to Checkout" : "proceed to checkout"}
               </button>
             </>
-          )}
-        </div>
+          </div>
+        )}
       </main>
     </div>
   );

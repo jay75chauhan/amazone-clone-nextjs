@@ -7,13 +7,12 @@ import { addToBasket } from "../slices/basketSlice";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-
 function Product({ id, title, price, description, category, image }) {
-  const [hasPrime] = useState(Math.random() < 0.5);
   const dispatch = useDispatch();
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) * MIN_RATING
   );
+  const [hasPrime] = useState(Math.random() < 0.5);
 
   const addItemToBasket = () => {
     const product = {
