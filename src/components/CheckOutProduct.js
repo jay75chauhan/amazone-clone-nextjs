@@ -12,7 +12,7 @@ function CheckOutProduct({
   description,
   category,
   image,
-  hsaPrime,
+  hasPrime,
 }) {
   const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ function CheckOutProduct({
       description,
       category,
       image,
-      hsaPrime,
+      hasPrime,
     };
 
     dispatch(addToBasket(product));
@@ -56,11 +56,10 @@ function CheckOutProduct({
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
         <p className="font-bold">{`₹ ${Math.round(price * 74.38)}`}</p>
-        {hsaPrime && (
+        {hasPrime && (
           <div className="flex items-center space-x-1">
             <img
-              className="w-2"
-              loading="lazy"
+              className="w-12"
               src="https://links.papareact.com/fdw"
               alt="Amazone Prime"
             />

@@ -13,18 +13,18 @@ function CheckOut() {
   const [session] = useSession();
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
       <Head>
-        <title>Products </title>
+        <title>your 🛒 </title>
         <link
           rel="icon"
           href="https://cdn3.iconfinder.com/data/icons/cute-flat-social-media-icons-3/512/amazon.png"
         />
       </Head>
       <Header />
-      <main className="lg:flex max-w-screen-xl mx-auto ">
+      <main className="lg:flex  max-w-screen-xl mx-auto ">
         {/* Left */}
-        <div className="flex-grow m-5 shadow-sm rounded-sm bg-white ">
+        <div className="flex-grow m-5 shadow-sm rounded-sm bg-gray-50 ">
           <Image
             src="https://links.papareact.com/ikj"
             width={1020}
@@ -32,8 +32,8 @@ function CheckOut() {
             objectFit="contain"
           />
 
-          <div className="flex flex-col p-5 space-y-10 bg-white">
-            <h1 className="text-3xl border-b pb-4">
+          <div className="flex flex-col p-5 space-y-10 bg-gray-50">
+            <h1 className="text-3xl border-b font-medium pb-4">
               {items.length === 0
                 ? "Your Amazone Basket is empty. "
                 : "Shopping Basket"}
@@ -55,7 +55,7 @@ function CheckOut() {
         </div>
 
         {/* Right */}
-        <div className="flex flex-col bg-white  p-10 shadow-md md:w-[500px]  ">
+        <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[500px]  ">
           {items.length > 0 && (
             <>
               <h2 className="whitespace-normal">
