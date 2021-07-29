@@ -55,10 +55,10 @@ function CheckOut() {
         </div>
 
         {/* Right */}
-        <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[500px]  ">
+        <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[400px]  ">
           {items.length > 0 && (
             <>
-              <h2 className="whitespace-normal">
+              <h2 className="whitespace-nowrap">
                 Subtotal ({items.length} items) :{""}
                 <p className="font-bold items-center md:pl-5">
                   {` ₹_${Math.round(total * 74.38)}`}
