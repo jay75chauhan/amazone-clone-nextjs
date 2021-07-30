@@ -7,4 +7,7 @@ module.exports = {
       "cdn3.iconfinder.com",
     ],
   },
+  env: {
+    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+  },
 };

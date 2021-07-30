@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckOutProduct from "../components/CheckOutProduct";
 import { useSession } from "next-auth/client";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function CheckOut() {
   const items = useSelector(selectItems);
@@ -14,8 +17,32 @@ function CheckOut() {
   const router = useRouter();
   const [session] = useSession();
 
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+
+    //call the backend to create a checkput session...
+
+    const checkoutSession = await axios.post(
+      "/api/create-checkout-session",
+
+      {
+        items: items,
+        email: session.user.email,
+      }
+    );
+
+    //Redirect user/customer to stripe checkout
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  };
+
   return (
-    <div className="bg-gray-50 h-screen">
+    <div className="bg-gray-50 h-full">
       <Head>
         <title>your 🛒 </title>
         <link
@@ -26,15 +53,15 @@ function CheckOut() {
       <Header />
       <main className="lg:flex  max-w-screen-xl mx-auto ">
         {/* Left */}
-        <div className="flex-grow  m-3 shadow-sm rounded-sm bg-gray-50 ">
+        <div className="flex-grow  m-3 shadow-md rounded-xl bottom-1 bg-[#FEFEFE]  ">
           <Image
             src="https://links.papareact.com/ikj"
-            width={1020}
+            width={800}
             height={200}
             objectFit="contain"
           />
 
-          <div className="flex flex-col p-3 space-y-8 bg-gray-50">
+          <div className="flex flex-col p-3 space-y-8 bg-[#FEFEFE] shadow-md">
             <h1 className="text-3xl border-b font-medium pb-4">
               {items.length === 0
                 ? "Your Amazone Basket is empty. "
@@ -54,17 +81,14 @@ function CheckOut() {
               />
             ))}
             {items.length === 0 && (
-              <div className="  flex flex-col items-center">
+              <div className="  flex flex-col items-center ">
                 <Image
                   src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
                   width={300}
-                  height={280}
+                  height={250}
                   objectFit="contain"
                 />
-                <button
-                  onClick={() => router.push("/")}
-                  className="button z-50 -mt-6"
-                >
+                <button onClick={() => router.push("/")} className="button">
                   Fill The Basket
                 </button>
               </div>
@@ -74,7 +98,7 @@ function CheckOut() {
 
         {/* Right */}
         {items.length > 0 && (
-          <div className="flex flex-col bg-white m-5 p-10 md:m-2 shadow-md rounded-md lg:mt-4 md:w-[400px]  ">
+          <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-2xl cursor-pointer sm:hover:scale-100 duration-500 hover:scale-105 bottom-3 rounded-xl lg:mt-4 md:w-[400px]  ">
             <>
               <h2 className="whitespace-nowrap">
                 Subtotal ({items.length} items) :{""}
@@ -84,6 +108,8 @@ function CheckOut() {
               </h2>
 
               <button
+                role="link"
+                onClick={createCheckoutSession}
                 disabled={!session}
                 className={`button mt-2 ${
                   !session &&
