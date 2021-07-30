@@ -18,7 +18,10 @@ function ProductFeed({ products }) {
           />
         ))}
 
-      <img className="md:col-span-full" src="https://links.papareact.com/dyz" />
+      <img
+        className="md:col-span-full m-6"
+        src="https://links.papareact.com/dyz"
+      />
       <div className="md:col-span-2">
         {products
           .slice(4, 5)

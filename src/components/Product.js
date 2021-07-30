@@ -32,7 +32,7 @@ function Product({ id, title, price, description, category, image }) {
   return (
     <div
       key={id}
-      className="relative flex flex-col m-5 bg-white z-30 p-10 rounded-lg shadow-lg "
+      className="relative flex flex-col m-5 bg-white z-50  p-10 rounded-lg shadow-lg duration-500    hover:scale-110 "
     >
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
         {category}

@@ -37,7 +37,7 @@ function CheckOutProduct({
 
   return (
     <div
-      className="grid grid-cols-5  bg-white shadow-xl rounded-lg p-5"
+      className="grid grid-cols-5  bg-white shadow-xl rounded-lg p-5 duration-500    hover:scale-105"
       key={id}
     >
       <Image src={image} height={200} width={200} objectFit="contain" />

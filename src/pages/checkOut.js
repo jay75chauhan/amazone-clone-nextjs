@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { selectItems, selectTotal } from "../slices/basketSlice";
 import CheckOutProduct from "../components/CheckOutProduct";
 import { useSession } from "next-auth/client";
@@ -10,10 +11,11 @@ import { useSession } from "next-auth/client";
 function CheckOut() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
+  const router = useRouter();
   const [session] = useSession();
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50 h-screen">
       <Head>
         <title>your 🛒 </title>
         <link
@@ -24,15 +26,15 @@ function CheckOut() {
       <Header />
       <main className="lg:flex  max-w-screen-xl mx-auto ">
         {/* Left */}
-        <div className="flex-grow m-5 shadow-sm rounded-sm bg-gray-50 ">
+        <div className="flex-grow  m-3 shadow-sm rounded-sm bg-gray-50 ">
           <Image
             src="https://links.papareact.com/ikj"
             width={1020}
-            height={250}
+            height={200}
             objectFit="contain"
           />
 
-          <div className="flex flex-col p-5 space-y-10 bg-white">
+          <div className="flex flex-col p-3 space-y-8 bg-gray-50">
             <h1 className="text-3xl border-b font-medium pb-4">
               {items.length === 0
                 ? "Your Amazone Basket is empty. "
@@ -52,12 +54,20 @@ function CheckOut() {
               />
             ))}
             {items.length === 0 && (
-              <Image
-                src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
-                width={300}
-                height={280}
-                objectFit="contain"
-              />
+              <div className="  flex flex-col items-center">
+                <Image
+                  src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
+                  width={300}
+                  height={280}
+                  objectFit="contain"
+                />
+                <button
+                  onClick={() => router.push("/")}
+                  className="button z-50 -mt-6"
+                >
+                  Fill The Basket
+                </button>
+              </div>
             )}
           </div>
         </div>
