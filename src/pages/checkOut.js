@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
+import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { selectItems, selectTotal } from "../slices/basketSlice";
@@ -102,9 +103,9 @@ function CheckOut() {
             <>
               <h2 className="whitespace-nowrap">
                 Subtotal ({items.length} items) :{""}
-                <p className="font-bold items-center md:pl-5">
-                  {` ₹_${Math.round(total * 74.38)}`}
-                </p>
+                <span className="font-bold">
+                  <Currency quantity={total} currency="INR" />
+                </span>
               </h2>
 
               <button

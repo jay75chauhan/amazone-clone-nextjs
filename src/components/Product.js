@@ -3,6 +3,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
+import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
@@ -52,7 +53,7 @@ function Product({ id, title, price, description, category, image }) {
 
           <p className="text-xs my-2 line-clamp-2">{description}</p>
           <div className="mb-5">
-            <p className="font-bold">{`₹ ${Math.round(price * 74.38)}`}</p>
+            <Currency quantity={price} currency="INR" />
           </div>
 
           {hasPrime && (

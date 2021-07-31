@@ -1,23 +1,25 @@
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
-//Secure a connection to Firebase from the backend
-const serviceAccout = require("../../../permissions.json");
-
+// Secure a connection to FIREBASE from the backend
+const serviceAccount = require("../../../permissions.json");
 const app = !admin.apps.length
   ? admin.initializeApp({
-      credential: admin.credential.cert(serviceAccout),
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: "https://e-clone-nextjs-default-rtdb.firebaseio.com",
     })
   : admin.app();
 
-//Establish connection to Stripe
-
+// Establish connection to Stripe
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
-const fullfillOrder = async (session) => {
-  console.log(`FUlfilling order `, sesssion);
+const fulfillOrder = async (session) => {
+  //I CAN UNCOMMENT THE CODE BELOW TO CHECK THE STATUS OF THE ORDER WHEN TESTING IT
+  // ONLY TO CHECK BECAUSE IT WOULD SUPER SPAM THE TERMINAL
+
+  // console.log("Fulfilling order", session);
 
   return app
     .firestore()
@@ -32,7 +34,7 @@ const fullfillOrder = async (session) => {
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
-      console.log(`SUCCESS Order ${session.id} has ben added to DB`);
+      console.log(`SUCCESS: Order ${session.id} had been added  to the DB`);
     });
 };
 
@@ -44,24 +46,22 @@ export default async (req, res) => {
 
     let event;
 
-    //verify that EVENT posted came frome stripe
-
+    //Verify that the EVENT posted came from stripe
     try {
       event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
     } catch (err) {
       console.log("ERROR", err.message);
-      return res.status(400).send(`webhook error : ${err.message}`);
+      return res.status(400).send(`Webhook error: ${err.message}`);
     }
 
-    //Handle the checkout.session.completed event
-
+    //Handle the checkout .session.completed event
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
-      //Fulfill the order..
-      return fullfillOrder(session)
+      // Fulfill the order...
+      return fulfillOrder(session)
         .then(() => res.status(200))
-        .catch((err) => res.status(400).send(`webhook Error : ${err.message}`));
+        .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`));
     }
   }
 };

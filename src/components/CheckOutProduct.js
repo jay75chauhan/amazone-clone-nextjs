@@ -1,6 +1,7 @@
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import React from "react";
+import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import Fade from "react-reveal/Fade";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
@@ -58,7 +59,7 @@ function CheckOutProduct({
             </div>
 
             <p className="text-xs my-2 line-clamp-3">{description}</p>
-            <p className="font-bold">{`₹ ${Math.round(price * 74.38)}`}</p>
+            <Currency quantity={price} currency="INR" />
             {hasPrime && (
               <div className="flex items-center space-x-1">
                 <img
