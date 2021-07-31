@@ -24,7 +24,7 @@ function failled() {
           <div className="flex flex-col p-10 bg-whiter rounded-lg shadow-2xl m-8 bottom-b border-black">
             <div className="flex items-center space-x-2 mb-5 mt">
               <XCircleIcon className=" text-red-500 h-10" />
-              <h1 className="text-3xl">Payment failled </h1>
+              <h1 className="text-3xl">Payment failled 😨</h1>
             </div>
 
             <button
