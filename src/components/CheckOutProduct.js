@@ -41,7 +41,7 @@ function CheckOutProduct({
     <Fade button>
       <div>
         <div
-          className="grid grid-cols-5  bg-white m-4 shadow-xl rounded-lg p-5 duration-500    hover:scale-105"
+          className="grid grid-cols-5  bg-white m-6 shadow-xl rounded-lg p-3 duration-500    hover:scale-105"
           key={id}
         >
           <Image src={image} height={200} width={200} objectFit="contain" />
