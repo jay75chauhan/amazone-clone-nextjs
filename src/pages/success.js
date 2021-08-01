@@ -5,7 +5,7 @@ import Head from "next/head";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import Zoom from "react-reveal/Zoom";
 
-function succes() {
+function success() {
   const router = useRouter();
   return (
     <div className="h-screen bg-gray-100">
@@ -45,4 +45,4 @@ function succes() {
   );
 }
 
-export default succes;
+export default success;

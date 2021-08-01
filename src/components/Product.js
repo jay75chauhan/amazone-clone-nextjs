@@ -3,6 +3,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
+import Zoom from 'react-reveal/Zoom';
 import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
@@ -32,7 +33,7 @@ function Product({ id, title, price, description, category, image }) {
   };
 
   return (
-    <Fade bottom key={id}>
+    <Zoom  key={id}>
       <div key={id} className="z-20">
         <div
           key={id}
