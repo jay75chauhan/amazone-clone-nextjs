@@ -72,7 +72,7 @@ function Product({ id, title, price, description, category, image }) {
           </button>
         </div>
       </div>
-    </Fade>
+    </Zoom>
   );
 }
 
