@@ -32,8 +32,8 @@ function Product({ id, title, price, description, category, image }) {
   };
 
   return (
-    <Fade bottom>
-      <div className="z-20">
+    <Fade bottom key={id}>
+      <div key={id} className="z-20">
         <div
           key={id}
           className="relative overflow-x-hidden flex flex-col m-5  bg-white p-10 rounded-lg shadow-lg duration-500      md:h-[530px] h-[480px]  md:hover:scale-110 "
@@ -43,7 +43,7 @@ function Product({ id, title, price, description, category, image }) {
           </p>
           <Image src={image} height={200} width={200} objectFit="contain" />
           <h4 className="my-3 line-clamp-3">{title}</h4>
-          <div className="flex">
+          <div key={id} className="flex">
             {Array(rating)
               .fill()
               .map((_, i) => (

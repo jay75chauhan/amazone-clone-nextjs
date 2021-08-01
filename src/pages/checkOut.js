@@ -52,7 +52,7 @@ function checkout() {
         />
       </Head>
       <Header />
-      <main className="lg:flex  max-w-screen-xl mx-auto ">
+      <div className="lg:flex  max-w-screen-xl mx-auto ">
         {/* Left */}
         <div className="flex-grow  m-3 shadow-md rounded-xl bottom-1 bg-[#FEFEFE]  ">
           <Image
@@ -122,7 +122,7 @@ function checkout() {
             </>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

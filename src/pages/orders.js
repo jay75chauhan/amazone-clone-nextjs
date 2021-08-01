@@ -11,7 +11,7 @@ function orders({ orders }) {
   return (
     <div>
       <Head>
-        <title>📦 order Order's</title>
+        <title>📦 your Order's</title>
         <link
           rel="icon"
           href="https://cdn3.iconfinder.com/data/icons/cute-flat-social-media-icons-3/512/amazon.png"
