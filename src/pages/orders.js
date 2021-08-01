@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-import { getSession, useSession } from "next-auth/client";
+import { getSession, useSession, signIn } from "next-auth/client";
 import { db } from "../../firebase";
 import moment from "moment";
 import Order from "../components/Order";
@@ -9,7 +9,7 @@ import Order from "../components/Order";
 function orders({ orders }) {
   const [session] = useSession();
   return (
-    <div key={orders.id}>
+    <div>
       <Head>
         <title>📦 order Order's</title>
         <link
@@ -29,7 +29,13 @@ function orders({ orders }) {
             {orders.length}
           </h2>
         ) : (
-          <h2 className="text-base">Please sign in to see your order</h2>
+          <>
+            <h2 className="text-base">Please sign in to see your order</h2>
+
+            <button onClick={() => signIn()} className="button mt-10 o ">
+              SIGN IN
+            </button>
+          </>
         )}
 
         <div className="mt-5 space-y-4">
