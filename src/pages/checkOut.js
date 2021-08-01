@@ -18,29 +18,29 @@ function checkout() {
   const [session] = useSession();
   const stripePromise = loadStripe(process.env.stripe_public_key);
 
-  // const createCheckoutSession = async () => {
-  //   const stripe = await stripePromise;
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
 
-  //   //call the backend to create a checkput session...
+    //call the backend to create a checkput session...
 
-  //   const checkoutSession = await axios.post(
-  //     "/api/create-checkout-session",
+    const checkoutSession = await axios.post(
+      "/api/create-checkout-session",
 
-  //     {
-  //       items: items,
-  //       email: session.user.email,
-  //     }
-  //   );
+      {
+        items: items,
+        email: session.user.email,
+      }
+    );
 
-  //   //Redirect user/customer to stripe checkout
+    //Redirect user/customer to stripe checkout
 
-  //   const result = await stripe.redirectToCheckout({
-  //     sessionId: checkoutSession.data.id,
-  //   });
-  //   if (result.error) {
-  //     alert(result.error.message);
-  //   }
-  // };
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
+  };
 
   return (
     <div className="bg-gray-50 h-full">
