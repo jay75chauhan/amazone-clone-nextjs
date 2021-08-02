@@ -2,11 +2,11 @@ import moment from "moment";
 
 import React from "react";
 import Currency from "react-currency-formatter";
-import Bounce from "react-reveal/Bounce";
+import Zoom from "react-reveal/Zoom";
 
 function Order({ id, amount, amountShipping, items, timestamp, images }) {
   return (
-    <Bounce>
+    <Zoom>
       <>
         <div
           key={id}
@@ -49,7 +49,7 @@ function Order({ id, amount, amountShipping, items, timestamp, images }) {
           </div>
         </div>
       </>
-    </Bounce>
+    </Zoom>
   );
 }
 
