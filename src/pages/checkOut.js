@@ -11,7 +11,7 @@ import { useSession } from "next-auth/client";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
-function checkout() {
+function CheckOut() {
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const router = useRouter();
@@ -127,4 +127,4 @@ function checkout() {
   );
 }
 
-export default checkout;
+export default CheckOut;

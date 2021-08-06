@@ -6,7 +6,7 @@ import Head from "next/head";
 import { XCircleIcon } from "@heroicons/react/solid";
 import Zoom from "react-reveal/Zoom";
 
-function failled() {
+function Failled() {
   const router = useRouter();
   return (
     <div className="h-screen bg-gray-100">
@@ -40,4 +40,4 @@ function failled() {
   );
 }
 
-export default failled;
+export default Failled;

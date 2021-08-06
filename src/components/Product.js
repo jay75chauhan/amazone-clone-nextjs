@@ -8,7 +8,6 @@ import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
-import Fade from "react-reveal/Fade";
 
 function Product({ id, title, price, description, category, image }) {
   const dispatch = useDispatch();

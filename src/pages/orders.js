@@ -6,7 +6,7 @@ import { db } from "../../firebase";
 import moment from "moment";
 import Order from "../components/Order";
 
-function orders({ orders }) {
+function Orders({ orders }) {
   const [session] = useSession();
   return (
     <div>
@@ -58,7 +58,7 @@ function orders({ orders }) {
   );
 }
 
-export default orders;
+export default Orders;
 
 // Tells nextJS that's no longer a static page
 // eg "Please calculate smthg and send it to the user next"
