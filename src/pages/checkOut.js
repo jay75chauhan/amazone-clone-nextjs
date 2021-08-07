@@ -28,7 +28,7 @@ function CheckOut() {
 
       {
         items: items,
-        email: session.user.email,
+        email: session?.user.email,
       }
     );
 
@@ -64,7 +64,7 @@ function CheckOut() {
 
           <div className="flex flex-col p-3 space-y-8 bg-[#FEFEFE] shadow-md">
             <h1 className="text-3xl border-b font-medium pb-4">
-              {items.length === 0
+              {items?.length === 0
                 ? "Your Amazone Basket is empty. "
                 : "Shopping Basket"}
             </h1>
@@ -81,7 +81,7 @@ function CheckOut() {
                 hasPrime={item.hasPrime}
               />
             ))}
-            {items.length === 0 && (
+            {items?.length === 0 && (
               <div className="  flex flex-col items-center ">
                 <Image
                   src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
@@ -98,11 +98,11 @@ function CheckOut() {
         </div>
 
         {/* Right */}
-        {items.length > 0 && (
+        {items?.length > 0 && (
           <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-2xl cursor-pointer sm:hover:scale-100 duration-500 hover:scale-105 bottom-3 rounded-xl lg:mt-4 md:w-[400px]  ">
             <>
               <h2 className="whitespace-nowrap">
-                Subtotal ({items.length} items) :{""}
+                Subtotal ({items?.length} items) :{""}
                 <span className="font-bold">
                   <Currency quantity={total} currency="INR" />
                 </span>
