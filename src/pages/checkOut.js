@@ -68,7 +68,7 @@ function CheckOut() {
                 ? "Your Amazone Basket is empty. "
                 : "Shopping Basket"}
             </h1>
-            {items.map((item, i) => (
+            {items?.map((item, i) => (
               <CheckOutProduct
                 key={i}
                 id={item.id}
