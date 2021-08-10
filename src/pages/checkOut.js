@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import CheckOutProduct from "../components/CheckOutProduct";
 import Header from "../components/Header";
-import { selectItems, selectTotal } from "../slices/cartSlice";
+import { selectItems, selectTotal } from "../slices/basketSlice";
 import FlipMove from "react-flip-move";
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/client";
