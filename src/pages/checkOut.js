@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import CartProduct from "../components/CartProduct";
+import CheckOutProduct from "../components/CheckOutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/cartSlice";
 import FlipMove from "react-flip-move";
@@ -73,7 +73,7 @@ function CheckOut() {
                   },
                   i
                 ) => (
-                  <CartProduct
+                  <CheckOutProduct
                     key={id}
                     id={id}
                     title={title}
