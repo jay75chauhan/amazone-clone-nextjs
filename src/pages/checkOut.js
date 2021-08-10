@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import CheckOutProduct from "../components/CheckOutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-import FlipMove from "react-flip-move";
+
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/client";
 import { loadStripe } from "@stripe/stripe-js";
@@ -58,35 +58,33 @@ function CheckOut() {
                 : "Your Shopping Cart"}
             </h1>
 
-            <FlipMove>
-              {items.map(
-                (
-                  {
-                    id,
-                    title,
-                    price,
-                    rating,
-                    description,
-                    category,
-                    image,
-                    hasPrime,
-                  },
-                  i
-                ) => (
-                  <CheckOutProduct
-                    key={id}
-                    id={id}
-                    title={title}
-                    price={price}
-                    rating={rating}
-                    description={description}
-                    category={category}
-                    image={image}
-                    hasPrime={hasPrime}
-                  />
-                )
-              )}
-            </FlipMove>
+            {items.map(
+              (
+                {
+                  id,
+                  title,
+                  price,
+                  rating,
+                  description,
+                  category,
+                  image,
+                  hasPrime,
+                },
+                i
+              ) => (
+                <CheckOutProduct
+                  key={id}
+                  id={id}
+                  title={title}
+                  price={price}
+                  rating={rating}
+                  description={description}
+                  category={category}
+                  image={image}
+                  hasPrime={hasPrime}
+                />
+              )
+            )}
           </div>
         </div>
 
