@@ -10,13 +10,13 @@ import CheckOutProduct from "../components/CheckOutProduct";
 import { useSession } from "next-auth/client";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function CheckOut() {
   const items = useSelector(selectItems);
+  const [session] = useSession();
   const total = useSelector(selectTotal);
   const router = useRouter();
-  const [session] = useSession();
-  const stripePromise = loadStripe(process.env.stripe_public_key);
 
   const createCheckoutSession = async () => {
     const stripe = await stripePromise;
