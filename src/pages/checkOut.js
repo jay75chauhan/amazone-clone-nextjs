@@ -28,14 +28,14 @@ function CheckOut() {
 
       {
         items: items,
-        email: session?.user.email,
+        email: session?.user?.email,
       }
     );
 
     //Redirect user/customer to stripe checkout
 
     const result = await stripe.redirectToCheckout({
-      sessionId: checkoutSession.data.id,
+      sessionId: checkoutSession?.data?.id,
     });
     if (result.error) {
       alert(result.error.message);
