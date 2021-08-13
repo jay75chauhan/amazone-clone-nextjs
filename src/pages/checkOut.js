@@ -28,14 +28,14 @@ function CheckOut() {
 
       {
         items: items,
-        email: session?.user?.email,
+        email: session.user.email,
       }
     );
 
     //Redirect user/customer to stripe checkout
 
     const result = await stripe.redirectToCheckout({
-      sessionId: checkoutSession?.data?.id,
+      sessionId: checkoutSession.data.id,
     });
     if (result.error) {
       alert(result.error.message);
@@ -68,7 +68,7 @@ function CheckOut() {
                 ? "Your Amazone Basket is empty. "
                 : "Shopping Basket"}
             </h1>
-            {items?.map((item, i) => (
+            {items.map((item, i) => (
               <CheckOutProduct
                 key={i}
                 id={item.id}
@@ -81,7 +81,7 @@ function CheckOut() {
                 hasPrime={item.hasPrime}
               />
             ))}
-            {items?.length === 0 && (
+            {items.length === 0 && (
               <div className="  flex flex-col items-center ">
                 <Image
                   src="https://www.linkpicture.com/q/undraw_empty_cart_co35.png"
@@ -98,7 +98,7 @@ function CheckOut() {
         </div>
 
         {/* Right */}
-        {items?.length > 0 && (
+        {items.length > 0 && (
           <div className="flex flex-col bg-gray-50 m-5 p-10 md:m-2 shadow-2xl cursor-pointer sm:hover:scale-100 duration-500 hover:scale-105 bottom-3 rounded-xl lg:mt-4 md:w-[400px]  ">
             <>
               <h2 className="whitespace-nowrap">
