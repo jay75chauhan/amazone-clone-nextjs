@@ -64,7 +64,7 @@ function CheckOut() {
 
           <div className="flex flex-col p-3 space-y-8 bg-[#FEFEFE] shadow-md">
             <h1 className="text-3xl border-b font-medium pb-4">
-              {items?.length === 0
+              {items.length === 0
                 ? "Your Amazone Basket is empty. "
                 : "Shopping Basket"}
             </h1>
