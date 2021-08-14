@@ -50,7 +50,7 @@ function Header() {
               <p className="font-extrabold md:text-sm">& Order</p>
             </div>
             <div
-              onClick={() => router.push("/checkout")}
+              onClick={() => router.push("/cart")}
               className=" relative  link flex items-center"
             >
               <span className="absolute top-0 right-0 md:right-10 h-4 w-4 text-center rounded-full text-black font-bold bg-yellow-400">

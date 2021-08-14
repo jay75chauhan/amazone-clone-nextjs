@@ -12,7 +12,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
-function CheckOut() {
+function Cart() {
   const items = useSelector(selectItems);
   const [session] = useSession();
   const total = useSelector(selectTotal);
@@ -127,4 +127,4 @@ function CheckOut() {
   );
 }
 
-export default CheckOut;
+export default Cart;
