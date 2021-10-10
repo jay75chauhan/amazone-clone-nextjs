@@ -1,4 +1,11 @@
-module.exports = {
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
   images: {
     domains: [
       "links.papareact.com",
@@ -10,4 +17,4 @@ module.exports = {
   env: {
     stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
   },
-};
+});
